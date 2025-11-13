@@ -137,3 +137,36 @@ cython_debug/
 # Binaries and downloaded files
 /bin/
 *.weights
+
+# Node.js
+node_modules/
+*/node_modules/
+frontend/node_modules/
+package-lock.json
+frontend/package-lock.json
+frontend/dist/
+frontend/.vite/
+
+# AI Models (too large for git)
+*.pt
+*.pth
+*.onnx
+yolov8n.pt
+backend/yolov8n.pt
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads and outputs
+output_images/
+uploads/
+backend/uploads/
+backend/output_images/
+
+# Backend venv
+backend/venv/

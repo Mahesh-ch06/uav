@@ -148,6 +148,7 @@ class ApplicationSettings(BaseSettings):
         "case_sensitive": False,
         "env_prefix": "TRAFFIC_",
         "validate_assignment": True,
+        "protected_namespaces": (),  # Allow model_ prefixed fields
     }
 
 

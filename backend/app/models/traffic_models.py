@@ -157,3 +157,17 @@ class TrafficSnapshot(BaseModel):
     active_emergency_alerts: List[EmergencyAlert] = Field(default_factory=list)
     performance_metrics: Dict[str, Any] = Field(default_factory=dict)
     system_health: Dict[str, bool] = Field(default_factory=dict)
+
+
+class SystemHealthStatus(BaseModel):
+    """System health status and diagnostics"""
+    
+    status: str = Field(default="healthy", description="Overall system status")
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    uptime_seconds: float = Field(default=0.0, ge=0.0)
+    health_score: float = Field(default=1.0, ge=0.0, le=1.0)
+    services: Dict[str, bool] = Field(default_factory=dict)
+    system: Dict[str, Any] = Field(default_factory=dict)
+    websocket_connections: int = Field(default=0, ge=0)
+    version: str = Field(default="2.0.0")
+    environment: str = Field(default="development")

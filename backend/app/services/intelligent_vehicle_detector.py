@@ -4,18 +4,34 @@ Handles real-time vehicle detection and traffic analysis
 """
 
 import asyncio
+import os
 import time
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import cv2
 import numpy as np
+import torch
 from ultralytics import YOLO
 from PIL import Image, ImageDraw, ImageFont
 
 from ..core.config import settings
 from ..core.logger import LoggerMixin
 from ..models.traffic_models import VehicleDetectionResult, DetectedVehicle
+
+# Fix for PyTorch 2.6+ weights_only parameter change
+# Set environment variable to use weights_only=False for trusted model files
+os.environ['TORCH_FORCE_WEIGHTS_ONLY_LOAD'] = '0'
+
+# Alternatively, monkey patch torch.load for YOLOv8 compatibility
+_original_torch_load = torch.load
+def _patched_torch_load(*args, **kwargs):
+    """Patched torch.load that defaults to weights_only=False for YOLOv8 models"""
+    if 'weights_only' not in kwargs:
+        kwargs['weights_only'] = False
+    return _original_torch_load(*args, **kwargs)
+
+torch.load = _patched_torch_load
 
 
 class IntelligentVehicleDetector(LoggerMixin):

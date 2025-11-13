@@ -1,0 +1,262 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  color: #e0e0e0;
+}
+
+.api-info {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: #d0d0d0;
+  margin-top: 0.5rem;
+  font-family: monospace;
+}
+
+.container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 3rem;
+  color: white;
+}
+
+.status-card, .services-card, .api-links, .info-card, .error-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.status-card h2, .services-card h2, .api-links h2 {
+  margin-bottom: 1.5rem;
+  color: #667eea;
+  font-size: 1.5rem;
+}
+
+.status-card.healthy h2 {
+  color: #10b981;
+}
+
+.status-card.degraded h2 {
+  color: #f59e0b;
+}
+
+.status-card.unhealthy h2 {
+  color: #ef4444;
+}
+
+.status-grid, .services-grid, .links-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.status-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.status-item .label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.status-item .value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+.service.active {
+  background: #d1fae5;
+  border-left: 4px solid #10b981;
+}
+
+.service.inactive {
+  background: #fee2e2;
+  border-left: 4px solid #ef4444;
+}
+
+.service .icon {
+  font-size: 1.5rem;
+}
+
+.service .name {
+  font-weight: 500;
+}
+
+.links-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.api-link {
+  display: block;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.api-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.info-card h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.info-card ol {
+  margin-left: 1.5rem;
+}
+
+.info-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.info-card code {
+  background: #f1f5f9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #667eea;
+}
+
+.error-card {
+  background: #fee2e2;
+  border-left: 4px solid #ef4444;
+}
+
+.error-card h2 {
+  color: #ef4444;
+}
+
+.error-card .hint {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  font-family: monospace;
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  .status-grid,
+  .services-grid,
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+}
