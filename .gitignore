@@ -170,3 +170,4 @@ backend/output_images/
 
 # Backend venv
 backend/venv/
+.vercel

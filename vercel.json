@@ -1,39 +1,11 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "framework": null,
+  "rewrites": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json))",
-      "dest": "/frontend/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/index.html"
-    }
-  ],
-  "env": {
-    "TRAFFIC_DEBUG_MODE": "false",
-    "TRAFFIC_LOG_LEVEL": "INFO",
-    "TRAFFIC_ENABLE_GPU_ACCELERATION": "false",
-    "TRAFFIC_MODEL_CACHE_DIRECTORY": "/tmp/models",
-    "TRAFFIC_API_HOST": "0.0.0.0",
-    "ENVIRONMENT": "production",
-    "TRAFFIC_ALLOWED_ORIGINS": "*"
-  }
+  ]
 }

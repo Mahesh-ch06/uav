@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-// Use relative API URL for Vercel deployment
-const API_URL = '/api'
+// For development/demo - update with your actual backend URL
+const API_URL = 'http://localhost:8000'
 
 interface HealthStatus {
   status: string
@@ -45,7 +45,7 @@ function App() {
       <header className="App-header">
         <h1>🚦 AI Traffic Management System</h1>
         <p className="subtitle">Real-time Vehicle Detection & Adaptive Signal Control</p>
-        <p className="api-info">Deployed on Vercel</p>
+        <p className="api-info">Demo Mode - Connect to your backend</p>
       </header>
 
       <main className="container">
@@ -55,7 +55,7 @@ function App() {
           <div className="error-card">
             <h2>❌ Connection Error</h2>
             <p>{error}</p>
-            <p className="hint">Backend is initializing... First request may take 30-60 seconds.</p>
+            <p className="hint">Start your backend locally with: cd backend && python -m uvicorn app.main:app --reload</p>
           </div>
         )}
 
