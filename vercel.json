@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/app/main.py",
+      "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb"
@@ -10,17 +10,24 @@
     },
     {
       "src": "frontend/package.json",
-      "use": "@vercel/node"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/app/main.py"
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json))",
+      "dest": "/frontend/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1"
+      "dest": "/frontend/index.html"
     }
   ],
   "env": {
@@ -29,14 +36,12 @@
     "TRAFFIC_ENABLE_GPU_ACCELERATION": "false",
     "TRAFFIC_MODEL_CACHE_DIRECTORY": "/tmp/models",
     "TRAFFIC_API_HOST": "0.0.0.0",
-    "TRAFFIC_API_PORT": "8000"
+    "ENVIRONMENT": "production",
+    "TRAFFIC_ALLOWED_ORIGINS": "*"
   },
   "functions": {
-    "backend/app/main.py": {
-      "maxDuration": 30
+    "api/index.py": {
+      "maxDuration": 60
     }
-  },
-  "installCommand": "cd backend && pip install -r requirements.txt && cd ../frontend && npm install",
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/dist"
+  }
 }
