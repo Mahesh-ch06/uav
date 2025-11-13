@@ -4,6 +4,7 @@
 # Core Web Framework - Modern FastAPI Stack
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
+mangum==0.17.0
 websockets==12.0
 python-multipart==0.0.6
 starlette==0.27.0
@@ -11,8 +12,8 @@ starlette==0.27.0
 # AI and Computer Vision - YOLOv8 Only (No Legacy Darkflow)
 ultralytics==8.0.206
 opencv-python-headless==4.8.1.78  # Headless for production
-torch>=2.0.0
-torchvision>=0.15.0
+torch<2.6
+torchvision<0.24
 numpy==1.24.4
 Pillow==10.1.0
 scipy==1.11.4
