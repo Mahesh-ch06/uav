@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "api/index.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/python"
     },
     {
       "src": "frontend/package.json",
@@ -38,10 +35,5 @@
     "TRAFFIC_API_HOST": "0.0.0.0",
     "ENVIRONMENT": "production",
     "TRAFFIC_ALLOWED_ORIGINS": "*"
-  },
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60
-    }
   }
 }
